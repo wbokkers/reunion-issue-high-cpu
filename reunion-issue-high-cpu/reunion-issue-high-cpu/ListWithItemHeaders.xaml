@@ -29,7 +29,7 @@
                             Background="{ThemeResource SystemBaseMediumHighColor}"
                             BorderThickness="0"
                             CornerRadius="0,3,3,0">
-                            <ContentControl
+                            <ContentPresenter
                                 x:Name="ContentPresenter"
                                 Margin="4,0"
                                 Padding="0"
