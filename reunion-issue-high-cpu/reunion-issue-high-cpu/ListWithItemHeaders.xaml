@@ -1,0 +1,80 @@
+﻿<UserControl
+    x:Class="reunion_issue_high_cpu.ListWithItemHeaders"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:reunion_issue_high_cpu"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="ListViewHeaderItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontSize" Value="{ThemeResource ListViewHeaderItemThemeFontSize}" />
+            <Setter Property="Background" Value="{ThemeResource SystemBaseMediumColor}" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FocusVisualPrimaryThickness" Value="0" />
+            <Setter Property="FocusVisualSecondaryThickness" Value="0" />
+            <Setter Property="MinHeight" Value="8" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewHeaderItem">
+                        <Border
+                            Margin="0,1,0,1"
+                            Padding="2"
+                            Background="{ThemeResource SystemBaseMediumHighColor}"
+                            BorderThickness="0"
+                            CornerRadius="0,3,3,0">
+                            <ContentControl
+                                x:Name="ContentPresenter"
+                                Margin="4,0"
+                                Padding="0"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentTransitions="{TemplateBinding ContentTransitions}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <ListView x:Name="messageList">
+        <ListView.GroupStyle>
+            <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                    <DataTemplate x:DataType="local:MessageGroup">
+                        <TextBlock
+                            Height="20"
+                            Margin="0"
+                            CharacterSpacing="100"
+                            FontSize="13"
+                            FontWeight="Medium"
+                            Foreground="White"
+                            Text="{x:Bind GroupDate}" />
+                    </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+            </GroupStyle>
+        </ListView.GroupStyle>
+
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="local:MessageItem">
+                <Border
+                    Margin="4"
+                    Padding="4"
+                    BorderBrush="{StaticResource SystemBaseMediumColor}"
+                    BorderThickness="1">
+                    <TextBlock Text="{x:Bind Message}" />
+                </Border>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
+</UserControl>
